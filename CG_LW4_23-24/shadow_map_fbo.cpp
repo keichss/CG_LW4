@@ -24,7 +24,7 @@ bool ShadowMapFBO::Init(unsigned int WindowWidth, unsigned int WindowHeight)
     // Создаем FBO
     glGenFramebuffers(1, &m_fbo);
 
-    // Создаем буфер глубины
+    // Создаем буфер глубины, создаем текстуру, которая будет служить в качестве карты теней
     glGenTextures(1, &m_shadowMap);
     glBindTexture(GL_TEXTURE_2D, m_shadowMap);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, WindowWidth, WindowHeight, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
@@ -33,13 +33,13 @@ bool ShadowMapFBO::Init(unsigned int WindowWidth, unsigned int WindowHeight)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 
-    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo); //прикрепляем текстуру к FBO
     glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D,
                            m_shadowMap, 0);
 
     // Отключаем запись в буфер цвета
-    glDrawBuffer(GL_NONE);
-
+    glDrawBuffer(GL_NONE); 
+    //проверка состояния FBO
     GLenum Status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
 
     if (Status != GL_FRAMEBUFFER_COMPLETE){

@@ -66,7 +66,7 @@ public:
             printf("Error initializing the lighting technique\n");
             return false;
         }
-
+        //устанавливаем uniform-значения, которые не изменяются из кадра в кадр
         m_pLightingEffect->Enable();
         m_pLightingEffect->SetSpotLights(1, &m_spotLight);
         m_pLightingEffect->SetTextureUnit(0);
@@ -112,7 +112,7 @@ public:
         glutSwapBuffers();
     }
 
-    virtual void ShadowMapPass()
+    virtual void ShadowMapPass() //разрешаем метод отображения теней каждый раз
     {
         m_shadowMapFBO.BindForWriting();
 
@@ -131,7 +131,9 @@ public:
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
-
+    /*очищаем и буфер глубины и буфер цвета, 
+    заменяем метод теней на свет и привязываем карту теней для чтения в модуль текстур 1. 
+    Далее мы рендерим плоскость так, что бы она служила землей, на которую падает тень*/
     virtual void RenderPass()
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
