@@ -11,7 +11,8 @@
 
 using namespace std;
 
-class CubemapTexture
+class CubemapTexture /*Этот класс включает в себя реализацию кубической текстуры и 
+                     предоставляет простой интерфейс для ее загрузки и использования*/
 {
 public:
     

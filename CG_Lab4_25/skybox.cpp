@@ -60,7 +60,7 @@ bool SkyBox::Init(const string& Directory,
 }
 
 
-void SkyBox::Render()
+void SkyBox::Render() //функция рендерит скайбокс
 {
     m_pSkyboxTechnique->Enable();
     

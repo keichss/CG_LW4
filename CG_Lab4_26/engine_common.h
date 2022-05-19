@@ -1,9 +1,4 @@
-/* 
- * File:   engine_common.h
- * Author: cl
- *
- * Created on June 10, 2011, 8:38 PM
- */
+
 
 #ifndef ENGINE_COMMON_H
 #define	ENGINE_COMMON_H

@@ -42,7 +42,7 @@ CubemapTexture::~CubemapTexture()
     }
 }
     
-bool CubemapTexture::Load()
+bool CubemapTexture::Load() //Функция, которая загружает текстуру, начинается с генерации объекта текстуры
 {
     glGenTextures(1, &m_textureObj);
     glBindTexture(GL_TEXTURE_CUBE_MAP, m_textureObj);
@@ -77,7 +77,7 @@ bool CubemapTexture::Load()
 }
 
     
-void CubemapTexture::Bind(GLenum TextureUnit)
+void CubemapTexture::Bind(GLenum TextureUnit) //Привязываться текстура будет к GL_TEXTURE_CUBE_MAP
 {
     glActiveTexture(TextureUnit);
     glBindTexture(GL_TEXTURE_CUBE_MAP, m_textureObj);

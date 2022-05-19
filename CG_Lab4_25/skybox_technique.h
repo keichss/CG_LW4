@@ -7,7 +7,7 @@
 #include "math_3d.h"
 
 
-class SkyboxTechnique : public Technique {
+class SkyboxTechnique : public Technique { //собственный метод для рендера
 public:
 
     SkyboxTechnique();
